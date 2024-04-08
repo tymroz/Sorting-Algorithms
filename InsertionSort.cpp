@@ -37,14 +37,16 @@ void printArray(int arr[], int n) {
 }
 
 int main(int argc, char* argv[]) {
-    int n = std::stoi(argv[1]);
+    int n;
+    std::cin >> n;
 
     int arr[n];
     
     for(int i = 0; i < n; i++){
-        arr[i] = std::stoi(argv[i + 2]);
+        std::cin >> arr[i];
     }
 
+    printArray(arr, n);
     insertionSort(arr, n);
     printArray(arr, n);
 
