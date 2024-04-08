@@ -16,17 +16,39 @@ void swap(int* a, int* b){
     swaps++;
 }
 
-void insertionSort(int arr[], int n){
-    int i, key, j;
-    for (i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
-        while (j >= 0 && compare(arr[j], key)) {
-            swap(&arr[j + 1], &arr[j]);
-            j = j - 1;
-        }
-        arr[j + 1] = key;
+int partition(int arr[], int start, int end){
+    int pivot = arr[start];
+    int count = 0;
+    for (int i = start + 1; i <= end; i++) {
+        if (arr[i] <= pivot)
+            count++;
     }
+ 
+    int pivotIndex = start + count;
+    swap(&arr[pivotIndex], &arr[start]);
+ 
+    int i = start, j = end;
+ 
+    while (compare(pivotIndex, i) && compare(j, pivotIndex)) {
+        while (arr[i] <= pivot) {
+            i++;
+        }
+        while (arr[j] > pivot) {
+            j--;
+        }
+        if (compare(pivotIndex, i) && compare(j, pivotIndex)) {
+            swap(&arr[i++], &arr[j--]);
+        }
+    }
+    return pivotIndex;
+}
+ 
+void quickSort(int arr[], int start, int end ){
+    if (start >= end)
+        return;
+    int p = partition(arr, start, end);
+    quickSort(arr, start, p - 1);
+    quickSort(arr, p + 1, end);
 }
  
 void printArray(int arr[], int n){
@@ -64,11 +86,11 @@ int main(){
         arr_copy[i] = arr[i];
     }
 
-    insertionSort(arr, n);
+    quickSort(arr, 0, n - 1);
     if(n<40){
-        std::cout << "tablica wejsciowa: " << std::endl;
+        std::cout << "input: " << std::endl;
         printArray(arr_copy, n);
-        std::cout << "tablica po sortowaniu: " << std::endl;
+        std::cout << "output: " << std::endl;
         printArray(arr, n);
     }
 
