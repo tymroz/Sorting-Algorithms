@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
     std::vector<int> randomKeys = generateRandomKeys(n);
     sort(randomKeys.begin(), randomKeys.end(), std::greater<int>());
 
-    std::cout << "Losowe klucze:" << std::endl;
+    std::cout << n << " ";
     for (int key : randomKeys) {
         std::cout << key << " ";
     }
