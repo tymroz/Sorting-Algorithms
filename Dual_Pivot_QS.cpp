@@ -15,7 +15,7 @@ void swap(int* a, int* b){
     swaps++;
 }
 
-std::pair<int, int> partition(int* arr, int low, int high){ 
+std::pair<int, int> partition(int arr[], int low, int high){ 
     if (compare(arr[low], arr[high])){
         swap(&arr[low], &arr[high]); 
     }
