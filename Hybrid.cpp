@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 const int INSERTION_SORT_THRESHOLD = 5;
 
@@ -97,6 +98,7 @@ bool is_sorted(int arr[],int n){
 }
 
 int main(){
+    std::ofstream outputFile("hybrid_data.txt", std::ios_base::app);
     int n;
     std::cin >> n;
 
@@ -115,7 +117,7 @@ int main(){
         std::cout << "output: " << std::endl;
         printArray(arr, n);
     }
-
+    outputFile << /*n << " " <<*/ swaps << " " << comparisons << std::endl;
     std::cout << "swaps: " << swaps << std::endl;
     std::cout << "comparisons: " << comparisons << std::endl;  
     is_sorted(arr, n);

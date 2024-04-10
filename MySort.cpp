@@ -121,9 +121,9 @@ int main(){
 
     mySort(arr, n);
     if(n<40){
-        std::cout << "tablica wejsciowa: " << std::endl;
+        std::cout << "input: " << std::endl;
         printArray(arr_copy, n);
-        std::cout << "tablica po sortowaniu: " << std::endl;
+        std::cout << "output: " << std::endl;
         printArray(arr, n);
     }
 

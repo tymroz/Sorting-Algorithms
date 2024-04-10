@@ -103,9 +103,9 @@ int main(){
 
     mergeSort(arr, 0, n - 1);
     if(n<40){
-        std::cout << "tablica wejsciowa: " << std::endl;
+        std::cout << "input: " << std::endl;
         printArray(arr_copy, n);
-        std::cout << "tablica po sortowaniu: " << std::endl;
+        std::cout << "putput: " << std::endl;
         printArray(arr, n);
     }
 
