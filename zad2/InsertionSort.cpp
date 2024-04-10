@@ -16,39 +16,17 @@ void swap(int* a, int* b){
     swaps++;
 }
 
-int partition(int arr[], int start, int end){
-    int pivot = arr[start];
-    int count = 0;
-    for (int i = start + 1; i <= end; i++) {
-        if (arr[i] <= pivot)
-            count++;
+void insertionSort(int arr[], int n){
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && compare(arr[j], key)) {
+            swap(&arr[j + 1], &arr[j]);
+            j = j - 1;
+        }
+        arr[j + 1] = key;
     }
- 
-    int pivotIndex = start + count;
-    swap(&arr[pivotIndex], &arr[start]);
- 
-    int i = start, j = end;
- 
-    while (pivotIndex > i && j > pivotIndex) {
-        while (!compare(arr[i], pivot)) {
-            i++;
-        }
-        while (compare(arr[j], pivot)) {
-            j--;
-        }
-        if (pivotIndex > i && j > pivotIndex) {
-            swap(&arr[i++], &arr[j--]);
-        }
-    }
-    return pivotIndex;
-}
- 
-void quickSort(int arr[], int start, int end ){
-    if (start >= end)
-        return;
-    int p = partition(arr, start, end);
-    quickSort(arr, start, p - 1);
-    quickSort(arr, p + 1, end);
 }
  
 void printArray(int arr[], int n){
@@ -74,7 +52,7 @@ bool is_sorted(int arr[],int n){
 }
 
 int main(){
-    std::ofstream outputFile("quick_data.txt", std::ios_base::app);
+    std::ofstream outputFile("insertion_data.txt", std::ios_base::app);
     int n;
     std::cin >> n;
 
@@ -86,14 +64,14 @@ int main(){
         arr_copy[i] = arr[i];
     }
 
-    quickSort(arr, 0, n - 1);
+    insertionSort(arr, n);
     if(n<40){
-        std::cout << "input: " << std::endl;
+        std::cout << "\ninput: " << std::endl;
         printArray(arr_copy, n);
         std::cout << "output: " << std::endl;
         printArray(arr, n);
     }
-    outputFile << /*n << " " <<*/ swaps << " " << comparisons << std::endl;
+    outputFile << n << " " << swaps << " " << comparisons << std::endl;
     outputFile.close();
     std::cout << "swaps: " << swaps << std::endl;
     std::cout << "comparisons: " << comparisons << std::endl;
