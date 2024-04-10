@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 const int INSERTION_SORT_THRESHOLD = 5;
 
@@ -31,14 +30,14 @@ int partition(int arr[], int start, int end){
  
     int i = start, j = end;
  
-    while (compare(pivotIndex, i) && compare(j, pivotIndex)) {
-        while (arr[i] <= pivot) {
+     while (pivotIndex > i && j > pivotIndex) {
+        while (!compare(arr[i], pivot)) {
             i++;
         }
-        while (arr[j] > pivot) {
+        while (compare(arr[j], pivot)) {
             j--;
         }
-        if (compare(pivotIndex, i) && compare(j, pivotIndex)) {
+        if (pivotIndex > i && j > pivotIndex) {
             swap(&arr[i++], &arr[j--]);
         }
     }
