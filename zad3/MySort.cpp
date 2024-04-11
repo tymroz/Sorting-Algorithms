@@ -109,7 +109,7 @@ bool is_sorted(int arr[],int n){
 }
 
 int main(){
-    std::ofstream outputFile("mysort_data.txt", std::ios_base::app);
+    //std::ofstream outputFile("mysort_data.txt", std::ios_base::app);
     int n;
     std::cin >> n;
 
@@ -128,8 +128,8 @@ int main(){
         std::cout << "output: " << std::endl;
         printArray(arr, n);
     }
-    outputFile << n << " " << swaps << " " << comparisons << std::endl;
-    outputFile.close();
+    //outputFile << n << " " << swaps << " " << comparisons << std::endl;
+    //outputFile.close();
     std::cout << "swaps: " << swaps << std::endl;
     std::cout << "comparisons: " << comparisons << std::endl;
     is_sorted(arr, n);
