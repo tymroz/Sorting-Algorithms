@@ -118,6 +118,7 @@ int main(){
         printArray(arr, n);
     }
     outputFile << n << " " << swaps << " " << comparisons << std::endl;
+    outputFile.close();
     std::cout << "swaps: " << swaps << std::endl;
     std::cout << "comparisons: " << comparisons << std::endl;  
     is_sorted(arr, n);

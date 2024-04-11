@@ -22,7 +22,7 @@ int partition(int arr[], int start, int end){
     int pivot = arr[start];
     int count = 0;
     for (int i = start + 1; i <= end; i++) {
-        if (arr[i] <= pivot)
+        if (!compare(arr[i], pivot))
             count++;
     }
  
@@ -118,6 +118,7 @@ int main(){
         printArray(arr, n);
     }
     outputFile << n << " " << swaps << " " << comparisons << std::endl;
+    outputFile.close();
     std::cout << "swaps: " << swaps << std::endl;
     std::cout << "comparisons: " << comparisons << std::endl;  
     is_sorted(arr, n);

@@ -59,13 +59,13 @@ void merge(int array[], int left, int mid, int right){
     }
 
     while (subArrayOne > indexOfSubArrayOne){
-        array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+        swap(&array[indexOfMergedArray], &leftArray[indexOfSubArrayOne]);
         indexOfSubArrayOne++;
         indexOfMergedArray++;
     }
 
     while (subArrayTwo > indexOfSubArrayTwo){
-        array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+        swap(&array[indexOfMergedArray], &rightArray[indexOfSubArrayTwo]);
         indexOfSubArrayTwo++;
         indexOfMergedArray++;
     }
